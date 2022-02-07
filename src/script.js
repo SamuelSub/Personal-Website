@@ -14,18 +14,24 @@ const scene = new THREE.Scene()
 
 let tl = gsap.timeline();
 
+tl.to('.loading', {
+    opacity: 0,
+    delay: 1,
+    duration: 0.5
+}, 0)
+
 tl.from('.hidetext', {
     delay: .5,
     duration: 1,
     ease: 'power4.out',
     stagger: 0.2,
     y: 100
-}, 0)
+}, 1)
 
 tl.to('.hidetext', {
     color: '#E63946',
     delay: 0.7
-}, 0)
+}, 1)
 
 
 // Loader
@@ -36,17 +42,17 @@ let laptop;
 loader.load('phone.glb', (glb) => {
     laptop = glb;
     scene.add(glb.scene)
-    gsap.to(glb.scene.position, {
+    tl.to(glb.scene.position, {
         duration: 1.5,
         z: 3.5,
         x: 4
         // x: 0.2,
         // y: -0.4
-    });
-    gsap.to(glb.scene.rotation, {
+    }, 1);
+    tl.to(glb.scene.rotation, {
         duration: 1.5,
         y: 2.7,
-    })
+    }, 1)
     if(window.innerWidth <= 600) {
         glb.scene.position.x = 0
         glb.scene.position.z = -5
@@ -116,15 +122,6 @@ const laptopAnimation = () => {
         y: `${scrollY * -0.003}em`
     })
 }
-
-// gsap.from('.card-1 div', {
-//     scrollTrigger: {
-//         trigger: '.card-1'
-//     },
-//     x: '-100vw',
-//     duration: 1
-// });
-
 
 // CARD 1
 gsap.to('.card-1', {
@@ -200,7 +197,6 @@ gsap.to('.hide-card-3-col-2', {
     },
     x: '100vw'
 })
-
 
 document.addEventListener('scroll', laptopAnimation);
 

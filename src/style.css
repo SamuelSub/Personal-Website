@@ -12,6 +12,21 @@ body {
   /* background-color: black; */
 }
 
+.loading {
+  position: absolute;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  font-family: 'Poppins';
+  background-color: black;
+}
+
 .wrapper {
   /* border: 1px solid yellow; */
   height: 100vh;
