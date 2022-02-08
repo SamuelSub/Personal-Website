@@ -15,10 +15,11 @@ const scene = new THREE.Scene()
 let tl = gsap.timeline();
 
 tl.to('.loading', {
-    opacity: 0,
-    delay: 1,
-    duration: 0.5
+    y: '-100vh',
+    delay: 1.2,
+    duration: 1
 }, 0)
+
 
 tl.from('.hidetext', {
     delay: .5,
@@ -26,12 +27,27 @@ tl.from('.hidetext', {
     ease: 'power4.out',
     stagger: 0.2,
     y: 100
-}, 1)
+}, 1.5)
+
+tl.from('nav', {
+    delay: 0.5,
+    duration: 1,
+    ease: 'power4.out',
+    y: -100
+}, 1.5)
+
+tl.from('.hidebutton', {
+    delay: 1,
+    duration: 1,
+    ease: 'power4.out',
+    stagger: 0.2,
+    y: 50
+}, 1.5)
 
 tl.to('.hidetext', {
     color: '#E63946',
     delay: 0.7
-}, 1)
+}, 1.5)
 
 
 // Loader
@@ -48,11 +64,11 @@ loader.load('phone.glb', (glb) => {
         x: 4
         // x: 0.2,
         // y: -0.4
-    }, 1);
+    }, 1.5);
     tl.to(glb.scene.rotation, {
         duration: 1.5,
         y: 2.7,
-    }, 1)
+    }, 1.5)
     if(window.innerWidth <= 600) {
         glb.scene.position.x = 0
         glb.scene.position.z = -5
@@ -118,6 +134,9 @@ const laptopAnimation = () => {
     gsap.to('.hidetext', {
         y: `${scrollY * 0.003}em`
     });
+    gsap.to('.hidebutton', {
+        y: `${scrollY * 0.005}em`
+    })
     gsap.to('.portfolio', {
         y: `${scrollY * -0.003}em`
     })
