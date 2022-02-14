@@ -6,7 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 gsap.registerPlugin(ScrollTrigger, scrollTo);
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
 // Scene
@@ -58,21 +58,28 @@ let laptop;
 loader.load('phone.glb', (glb) => {
     laptop = glb;
     scene.add(glb.scene)
-    tl.to(glb.scene.position, {
-        duration: 1.5,
-        z: 3.5,
-        x: 4
-        // x: 0.2,
-        // y: -0.4
-    }, 1.5);
-    tl.to(glb.scene.rotation, {
-        duration: 1.5,
-        y: 2.7,
-    }, 1.5)
+    if(window.innerWidth >= 600) {
+        tl.to(glb.scene.position, {
+            duration: 1.5,
+            z: 3.5,
+            x: 4
+        }, 1.5);
+        tl.to(glb.scene.rotation, {
+            duration: 1.5,
+            y: 2.7,
+        }, 1.5)
+    }
     if(window.innerWidth <= 600) {
-        glb.scene.position.x = 0
-        glb.scene.position.z = -5
-        glb.scene.position.y = 0
+        gsap.to(glb.scene.position, {
+            duration: 1.5,
+            z: -1,
+            x: 0.7,
+            y: 1.5
+        }, 1.5)
+        gsap.to(glb.scene.rotation, {
+            duration: 1.5,
+            y: 2.8
+        }, 1.5)
     } else {
         glb.scene.position.x = 5
     }
@@ -81,12 +88,8 @@ loader.load('phone.glb', (glb) => {
 })
 
 // Lights
-
 const pointLight = new THREE.PointLight(0xffffff, 1)
 pointLight.position.set(2, 0, 10);
-// gui.add(pointLight.position, 'x').min(0).max(100)
-// gui.add(pointLight.position, 'y').min(0).max(100)
-// gui.add(pointLight.position, 'z').min(0).max(100)
 scene.add(pointLight)
 
 /**
@@ -117,12 +120,7 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(40, sizes.width / sizes.height, 0.1, 100)
-// camera.position.x = 10
-// camera.position.y = 2
 camera.position.z = 12
-// camera.position.set(0, 3, 10);
-// camera.up.set(0, 5, 5)
-// camera.lookAt(0, 0, 0);
 
 scene.add(camera)
 
