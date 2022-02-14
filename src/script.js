@@ -15,7 +15,7 @@ const scene = new THREE.Scene()
 let tl = gsap.timeline();
 
 tl.to('.loading', {
-    y: '-100vh',
+    y: '-100%',
     delay: 1.2,
     duration: 1
 }, 0)
@@ -55,7 +55,7 @@ const loader = new GLTFLoader();
 
 let laptop;
 
-loader.load('phone.glb', (glb) => {
+loader.load('newPhone.glb', (glb) => {
     laptop = glb;
     scene.add(glb.scene)
     if(window.innerWidth >= 600) {
@@ -127,8 +127,18 @@ scene.add(camera)
 // Controls
 // const controls = new OrbitControls(camera, canvas);
 
+const seeMyWork = () => {
+    gsap.to(window, {
+        scrollTo: '.portfolio',
+        duration: 0.8
+    })
+}
+
 const laptopAnimation = () => {
-    laptop.scene.position.y = scrollY * 0.003
+    if(sizes.width >= 600) {
+        laptop.scene.position.y = scrollY * 0.003
+    } 
+    
     gsap.to('.hidetext', {
         y: `${scrollY * 0.003}em`
     });
@@ -215,7 +225,11 @@ gsap.to('.hide-card-3-col-2', {
     x: '100vw'
 })
 
+const btn = document.querySelector('.hidebutton');
+const ulBtn = document.querySelector('.portfolio-link');
 document.addEventListener('scroll', laptopAnimation);
+btn.addEventListener('click', seeMyWork);
+ulBtn.addEventListener('click', seeMyWork)
 
 /**
  * Renderer
