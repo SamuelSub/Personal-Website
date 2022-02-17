@@ -58,7 +58,7 @@ let laptop;
 loader.load('newPhone.glb', (glb) => {
     laptop = glb;
     scene.add(glb.scene)
-    if(window.innerWidth >= 600) {
+    if(window.innerWidth >= 660) {
         tl.to(glb.scene.position, {
             duration: 1.5,
             z: 3.5,
@@ -69,18 +69,22 @@ loader.load('newPhone.glb', (glb) => {
             y: 2.7,
         }, 1.5)
     }
-    if(window.innerWidth <= 600) {
+    
+    if(window.innerWidth < 660) {
         gsap.to(glb.scene.position, {
             duration: 1.5,
-            z: -1,
-            x: 0.7,
+            z: 0,
+            x: 0.5,
             y: 1.5
         }, 1.5)
+
         gsap.to(glb.scene.rotation, {
             duration: 1.5,
             y: 2.8
         }, 1.5)
+
     } else {
+        console.log(window.innerWidth);
         glb.scene.position.x = 5
     }
 }, undefined, (err) => {
@@ -172,7 +176,7 @@ const contact = () => {
 // })
 
 const laptopAnimation = () => {
-    if(sizes.width >= 600) {
+    if(sizes.width >= 670) {
         laptop.scene.position.y = scrollY * 0.003
     } 
     

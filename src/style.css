@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
   background-color: rgb(243, 242, 242);
   position: relative;
-  /* background-color: black; */
+  width: 100vw;
 }
 
 .loading {
@@ -267,7 +267,71 @@ section {
   justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+.mobile-wrapper {
+  display: none;
+}
+
+@media screen and (max-width: 670px) {
+  .nav-wrapper {
+    /* border: 2px solid red; */
+  }
+
+  .mobile-wrapper {
+    display: block;
+  }
+
+  .line-1,
+  .line-2,
+  .line-3 {
+    background-color: black;
+    width: 2.5rem;
+    height: 0.2rem;
+    margin: 0.2rem;
+  }
+
+  .hide-card-1-col,
+  .hide-card-2-col,
+  .hide-card-3-col {
+    display: none;
+    /* position: absolute;
+    content: '';
+    width: 30vw;
+    height: 50vh;
+    background-color: rgb(243, 242, 242); */
+  }
+
+  .hide-card-1-col-2,
+  .hide-card-2-col-2,
+  .hide-card-3-col-2 {
+    display: none;
+    /* position: absolute;
+    right: 0;
+    content: '';
+    width: 40vw;
+    height: 50vh;
+    background-color: rgb(243, 242, 242); */
+  }
+
+  .skills-wrapper {
+    /* border: 2px solid yellow;
+    flex-direction: column;
+    width: 100%;
+    margin: auto; */
+    /* justify-content: center;
+    align-content: center; */
+    display: none;
+  }
+
+  .skills-wrapper svg {
+    /* border: 2px solid red; */
+  }
+
+  .contact form {
+    /* display: flex;
+    flex-direction: column; */
+    display: none;
+  }
+
   .logo {
     font-size: 1.5rem;
   }
@@ -284,5 +348,12 @@ section {
   .wrapper h1 {
     font-size: 2.1rem;
     height: 3.5rem;
+  }
+
+  .card-1,
+  .card-2,
+  .card-3 {
+    display: flex;
+    flex-direction: column;
   }
 }
