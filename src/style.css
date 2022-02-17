@@ -218,10 +218,53 @@ section {
   outline: none;
 }
 
-.portfolio {
+.portfolio,
+.skills h3,
+.about h3,
+.contact h3 {
   font-family: 'Poppins';
   text-align: center;
   font-size: 3rem;
+}
+
+.skills,
+.about,
+.contact {
+  width: 70vw;
+  margin: auto;
+}
+
+.skills {
+  margin-top: 15rem;
+}
+
+.skills-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 10rem;
+}
+
+.skills svg {
+  width: 5rem;
+  height: 5rem;
+  margin: 2rem;
+}
+
+.about p {
+  font-size: 1.5rem;
+  display: flex;
+  width: 80%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.contact form {
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 @media screen and (max-width: 600px) {

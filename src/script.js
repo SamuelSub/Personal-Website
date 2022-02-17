@@ -134,6 +134,43 @@ const seeMyWork = () => {
     })
 }
 
+const skills = () => {
+    gsap.to(window, {
+        scrollTo: {
+            y: '.skills'
+        },
+        duration: 1.2
+    })
+}
+
+const about = () => {
+    gsap.to(window, {
+        scrollTo: {
+            y: '.about'
+        },
+        duration: 1.5
+    })
+}
+
+const contact = () => {
+    gsap.to(window, {
+        scrollTo: {
+            y: '.contact'
+        },
+        duration: 1.8
+    })
+}
+
+// h3 sections animation
+
+// gsap.to('.skills h3', {
+//     scrollTrigger: {
+//         trigger: '.skills h3',
+//         scrub: 1
+//     },
+//     scale: 1.2
+// })
+
 const laptopAnimation = () => {
     if(sizes.width >= 600) {
         laptop.scene.position.y = scrollY * 0.003
@@ -150,86 +187,120 @@ const laptopAnimation = () => {
     })
 }
 
+// Skills icons zooming in and out
+gsap.to('.skills-wrapper', {
+    scrollTrigger: {
+        trigger: '.skills-wrapper',
+        scrub: true
+    },
+    scale: 1.2
+})
+// About paragraph zooming in and out
+gsap.to('.about p', {
+    scrollTrigger: {
+        trigger: '.about p',
+        scrub: true
+    },
+    scale: 1.2
+})
+// Contact form zooming in and out
+gsap.to('.contact form', {
+    scrollTrigger: {
+        trigger: '.contact form',
+        scrub: true
+    },
+    scale: 1.2
+})
+
 // CARD 1
-gsap.to('.card-1', {
+const firstCardTl = gsap.timeline();
+firstCardTl.to('.card-1', {
     scrollTrigger: {
         trigger: '.card-1',
         scrub: 1
     },
     scale: 1.2
-})
+},0)
 
-gsap.to('.hide-card-1-col', {
+firstCardTl.to('.hide-card-1-col', {
     scrollTrigger: {
         trigger: '.hide-card-1-col',
         scrub: 7
     },
     x: '-100vw'
-})
+},0)
 
-gsap.to('.hide-card-1-col-2', {
+firstCardTl.to('.hide-card-1-col-2', {
     scrollTrigger: {
         trigger: '.hide-card-1-col-2',
         scrub: 7
     },
     x: '100vw'
-})
+},0)
 
 // CARD 2
-gsap.to('.card-2', {
+const secondCardTl = gsap.timeline();
+secondCardTl.to('.card-2', {
     scrollTrigger: {
         trigger: '.card-2',
         scrub: 1
     },
     scale: 1.2
-})
+},0)
 
-gsap.to('.hide-card-2-col', {
+secondCardTl.to('.hide-card-2-col', {
     scrollTrigger: {
         trigger: '.hide-card-2-col',
         scrub: 5
     },
     x: '-100vw'
-})
+},0)
 
-gsap.to('.hide-card-2-col-2', {
+secondCardTl.to('.hide-card-2-col-2', {
     scrollTrigger: {
         trigger: '.hide-card-2-col-2',
         scrub: 5
     },
     x: '100vw'
-})
+},0)
 
 // CARD 3
-gsap.to('.card-3', {
+const thirdCardTl = gsap.timeline();
+thirdCardTl.to('.card-3', {
     scrollTrigger: {
         trigger: '.card-3',
         scrub: 1
     },
     scale: 1.2
-})
+},0)
 
-gsap.to('.hide-card-3-col', {
+thirdCardTl.to('.hide-card-3-col', {
     scrollTrigger: {
         trigger: '.hide-card-3-col',
         scrub: 5
     },
     x: '-100vw'
-})
+},0)
 
-gsap.to('.hide-card-3-col-2', {
+thirdCardTl.to('.hide-card-3-col-2', {
     scrollTrigger: {
         trigger: '.hide-card-3-col-2',
         scrub: 5
     },
     x: '100vw'
-})
+},0)
 
 const btn = document.querySelector('.hidebutton');
 const ulBtn = document.querySelector('.portfolio-link');
+const skillsBtn = document.querySelector('.skills-link');
+const aboutBtn = document.querySelector('.about-link');
+const contactBtn = document.querySelector('.contact-link');
 document.addEventListener('scroll', laptopAnimation);
 btn.addEventListener('click', seeMyWork);
-ulBtn.addEventListener('click', seeMyWork)
+ulBtn.addEventListener('click', seeMyWork);
+skillsBtn.addEventListener('click', skills);
+aboutBtn.addEventListener('click', about);
+contactBtn.addEventListener('click', contact);
 
 /**
  * Renderer
