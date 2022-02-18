@@ -289,6 +289,43 @@ section {
     margin: 0.2rem;
   }
 
+  .cards {
+    /* border: 2px solid yellow; */
+  }
+
+  .card-1,
+  .card-2,
+  .card-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-1-img {
+    margin-left: 1rem;
+  }
+
+  .card-1-details,
+  .card-2-details,
+  .card-3-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-1-details p,
+  .card-1-details button,
+  .card-2-details p,
+  .card-2-details button,
+  .card-3-details p,
+  .card-3-details button {
+    text-align: center;
+    width: 100%;
+  }
+
+  .about p {
+    text-align: center;
+  }
+
   .hide-card-1-col,
   .hide-card-2-col,
   .hide-card-3-col {
@@ -313,23 +350,25 @@ section {
   }
 
   .skills-wrapper {
-    /* border: 2px solid yellow;
-    flex-direction: column;
-    width: 100%;
-    margin: auto; */
-    /* justify-content: center;
-    align-content: center; */
-    display: none;
+    flex-wrap: wrap;
+    margin: 5rem 0rem;
   }
 
   .skills-wrapper svg {
     /* border: 2px solid red; */
   }
 
+  .about {
+    margin-top: 30rem;
+  }
+
   .contact form {
-    /* display: flex;
-    flex-direction: column; */
-    display: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-3-img {
+    height: 20vh;
   }
 
   .logo {
@@ -348,12 +387,5 @@ section {
   .wrapper h1 {
     font-size: 2.1rem;
     height: 3.5rem;
-  }
-
-  .card-1,
-  .card-2,
-  .card-3 {
-    display: flex;
-    flex-direction: column;
   }
 }
