@@ -165,15 +165,32 @@ const contact = () => {
     })
 }
 
-// h3 sections animation
-
-// gsap.to('.skills h3', {
-//     scrollTrigger: {
-//         trigger: '.skills h3',
-//         scrub: 1
-//     },
-//     scale: 1.2
-// })
+let clicked = false;
+// Mobile nav
+const clickedNavigation = (e) => {
+    if(!clicked) {
+        clicked = true
+        gsap.to('.mobile-nav-holder', {
+            display: 'block',
+            backgroundColor: 'white',
+            width: '100vw',
+            height: '100vh',
+            position: 'fixed',
+            zIndex: 10000,
+            top: 0,
+            left: 0,
+            right: 0,
+            duration: 0.5
+        })
+    } else {
+        clicked = false
+        gsap.to('.mobile-nav-holder', {
+            height: '-100vh',
+            backgroundColor: 'rgb(243, 242, 242)',
+            duration: 0.8
+        })
+    }
+}
 
 const laptopAnimation = () => {
     if(sizes.width >= 670) {
@@ -299,12 +316,14 @@ const ulBtn = document.querySelector('.portfolio-link');
 const skillsBtn = document.querySelector('.skills-link');
 const aboutBtn = document.querySelector('.about-link');
 const contactBtn = document.querySelector('.contact-link');
+const menuBtn = document.querySelector('.mobile-wrapper');
 document.addEventListener('scroll', laptopAnimation);
 btn.addEventListener('click', seeMyWork);
 ulBtn.addEventListener('click', seeMyWork);
 skillsBtn.addEventListener('click', skills);
 aboutBtn.addEventListener('click', about);
 contactBtn.addEventListener('click', contact);
+menuBtn.addEventListener('click', clickedNavigation);
 
 /**
  * Renderer
