@@ -166,28 +166,39 @@ const contact = () => {
 }
 
 let clicked = false;
+let openMobileNavTl = gsap.timeline();
+let closeMobileNavTl = gsap.timeline();
 // Mobile nav
 const clickedNavigation = (e) => {
     if(!clicked) {
         clicked = true
-        gsap.to('.mobile-nav-holder', {
+        openMobileNavTl.to('.mobile-nav-holder', {
             display: 'block',
             backgroundColor: 'white',
             width: '100vw',
             height: '100vh',
             position: 'fixed',
-            zIndex: 10000,
+            zIndex: 100,
             top: 0,
             left: 0,
             right: 0,
             duration: 0.5
+        });
+        openMobileNavTl.to('.mobile-nav-holder ul', {
+            display: 'grid',
+            x: 0
         })
     } else {
         clicked = false
-        gsap.to('.mobile-nav-holder', {
+        closeMobileNavTl.to('.mobile-nav-holder ul', {
+            x: '-100vw',
+            display: 'none',
+            duration: 0.5
+        })
+        closeMobileNavTl.to('.mobile-nav-holder', {
             height: '-100vh',
             backgroundColor: 'rgb(243, 242, 242)',
-            duration: 0.8
+            duration: 1
         })
     }
 }
