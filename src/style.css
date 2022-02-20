@@ -284,6 +284,10 @@ section {
   display: none;
 }
 
+.mobile-nav-holder {
+  display: none;
+}
+
 @media screen and (max-width: 670px) {
   .mobile-nav-holder {
     display: none;
