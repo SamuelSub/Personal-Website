@@ -231,18 +231,18 @@ const clickedNavigation = (e) => {
 
 const laptopAnimation = () => {
     if(sizes.width >= 670) {
-        laptop.scene.position.y = scrollY * 0.003
+        // laptop.scene.position.y = scrollY * 0.003
     } 
     
-    gsap.to('.hidetext', {
-        y: `${scrollY * 0.003}em`
-    });
-    gsap.to('.hidebutton', {
-        y: `${scrollY * 0.005}em`
-    })
-    gsap.to('.portfolio', {
-        y: `${scrollY * -0.003}em`
-    })
+    // gsap.to('.hidetext', {
+    //     y: `${scrollY * 0.003}em`
+    // });
+    // gsap.to('.hidebutton', {
+    //     y: `${scrollY * 0.005}em`
+    // })
+    // gsap.to('.portfolio', {
+    //     y: `${scrollY * -0.003}em`
+    // })
 }
 
 // Skills icons zooming in and out
