@@ -131,38 +131,58 @@ scene.add(camera)
 // Controls
 // const controls = new OrbitControls(camera, canvas);
 
-const seeMyWork = () => {
+const seeMyWork = (e) => {
     gsap.to(window, {
         scrollTo: '.portfolio',
         duration: 0.8
     })
+    if(e.target.innerHTML === 'My Work' || 'Portfolio' && window.innerWidth >= 670) {
+        return
+    } else {
+        clickedNavigation();
+    }
 }
 
-const skills = () => {
+const skills = (e) => {
     gsap.to(window, {
         scrollTo: {
             y: '.skills'
         },
         duration: 1.2
     })
+    if(e.target.innerHTML === 'Skills' && window.innerWidth >= 670) {
+        return
+    } else {
+        clickedNavigation();
+    }
 }
 
-const about = () => {
+const about = (e) => {
     gsap.to(window, {
         scrollTo: {
             y: '.about'
         },
         duration: 1.5
     })
+    if(e.target.innerHTML === 'About' && window.innerWidth >= 670) {
+        return
+    } else {
+        clickedNavigation();
+    }
 }
 
-const contact = () => {
+const contact = (e) => {
     gsap.to(window, {
         scrollTo: {
             y: '.contact'
         },
         duration: 1.8
     })
+    if(e.target.innerHTML === 'Contact' && window.innerWidth >= 670) {
+        return
+    } else {
+        clickedNavigation();
+    }
 }
 
 let clicked = false;
@@ -328,6 +348,11 @@ const skillsBtn = document.querySelector('.skills-link');
 const aboutBtn = document.querySelector('.about-link');
 const contactBtn = document.querySelector('.contact-link');
 const menuBtn = document.querySelector('.mobile-wrapper');
+// Mobile nav links
+const ulBtnMobile = document.querySelector('.mobile-nav-holder .portfolio-link');
+const skillsBtnMobile = document.querySelector('.mobile-nav-holder .skills-link');
+const aboutBtnMobile = document.querySelector('.mobile-nav-holder .about-link');
+const contactBtnMobile = document.querySelector('.mobile-nav-holder .contact-link');
 document.addEventListener('scroll', laptopAnimation);
 btn.addEventListener('click', seeMyWork);
 ulBtn.addEventListener('click', seeMyWork);
@@ -335,6 +360,10 @@ skillsBtn.addEventListener('click', skills);
 aboutBtn.addEventListener('click', about);
 contactBtn.addEventListener('click', contact);
 menuBtn.addEventListener('click', clickedNavigation);
+ulBtnMobile.addEventListener('click', seeMyWork)
+skillsBtnMobile.addEventListener('click', skills)
+aboutBtnMobile.addEventListener('click', about)
+contactBtnMobile.addEventListener('click', contact)
 
 /**
  * Renderer

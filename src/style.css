@@ -7,10 +7,9 @@
 }
 
 body {
-  overflow-x: hidden;
   background-color: rgb(243, 242, 242);
   position: relative;
-  width: 100vw;
+  overflow-x: hidden;
 }
 
 .loading {
@@ -140,6 +139,7 @@ section {
   border: none;
   margin-top: 2rem;
   margin-right: 1rem;
+  width: 80%;
 }
 
 .btn-live a:hover,
@@ -157,6 +157,11 @@ section {
   color: black;
   padding: 0.5rem 1rem;
   border: 1px solid #e63946;
+}
+
+.btn-live,
+.btn-source {
+  background-color: transparent;
 }
 
 .cards {
@@ -274,10 +279,21 @@ section {
 }
 
 .contact form {
-  margin-top: 2rem;
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  width: 80%;
   justify-content: center;
+  margin: 5rem auto;
+}
+
+.contact form input,
+textarea {
+  margin: 0.5rem 0rem;
+  border: none;
+  padding: 0.7rem;
+  background-color: rgb(243, 242, 242);
+  border-bottom: 2px solid #e63946;
+  outline: none;
 }
 
 .mobile-wrapper {
