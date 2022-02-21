@@ -4,7 +4,6 @@ import * as THREE from 'three'
 // import * as dat from 'dat.gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-gsap.registerPlugin(ScrollTrigger, scrollTo);
 // Debug
 // const gui = new dat.GUI()
 // Canvas
@@ -13,6 +12,7 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 let tl = gsap.timeline();
+gsap.registerPlugin(ScrollTrigger, scrollTo);
 
 tl.to('.loading', {
     y: '-100%',
@@ -90,6 +90,12 @@ loader.load('newPhone.glb', (glb) => {
 }, undefined, (err) => {
     console.error(err);
 })
+
+const domLoaded = (e) => {
+    console.log('loaded')
+}
+
+window.addEventListener('DOMContentLoaded', domLoaded)
 
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 1)
