@@ -14,6 +14,10 @@ const scene = new THREE.Scene()
 let tl = gsap.timeline();
 gsap.registerPlugin(ScrollTrigger, scrollTo);
 
+window.addEventListener('load', (e) => {
+    console.log('ready')
+})
+
 tl.to('.loading', {
     y: '-100%',
     delay: 1.2,
@@ -91,12 +95,6 @@ loader.load('newPhone.glb', (glb) => {
     console.error(err);
 })
 
-const domLoaded = (e) => {
-    console.log('loaded')
-}
-
-window.addEventListener('DOMContentLoaded', domLoaded)
-
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 1)
 pointLight.position.set(2, 0, 10);
@@ -133,9 +131,6 @@ const camera = new THREE.PerspectiveCamera(40, sizes.width / sizes.height, 0.1, 
 camera.position.z = 12
 
 scene.add(camera)
-
-// Controls
-// const controls = new OrbitControls(camera, canvas);
 
 const seeMyWork = (e) => {
     gsap.to(window, {
