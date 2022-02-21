@@ -139,7 +139,8 @@ section {
   border: none;
   margin-top: 2rem;
   margin-right: 1rem;
-  width: 80%;
+  /* width: 80%; */
+  text-align: left;
 }
 
 .btn-live a:hover,
@@ -155,7 +156,7 @@ section {
   text-decoration: none;
   border-radius: 3px;
   color: black;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem;
   border: 1px solid #e63946;
 }
 
@@ -243,6 +244,15 @@ section {
   font-family: 'Poppins';
   text-align: center;
   font-size: 3rem;
+}
+
+.portfolio-link a,
+.skills-link a,
+.about-link a,
+.contact-link a,
+.hidebutton a {
+  text-decoration: none;
+  color: black;
 }
 
 .skills,
