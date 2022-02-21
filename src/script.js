@@ -229,22 +229,6 @@ const clickedNavigation = (e) => {
     }
 }
 
-const laptopAnimation = () => {
-    if(sizes.width >= 670) {
-        // laptop.scene.position.y = scrollY * 0.003
-    } 
-    
-    // gsap.to('.hidetext', {
-    //     y: `${scrollY * 0.003}em`
-    // });
-    // gsap.to('.hidebutton', {
-    //     y: `${scrollY * 0.005}em`
-    // })
-    // gsap.to('.portfolio', {
-    //     y: `${scrollY * -0.003}em`
-    // })
-}
-
 // Skills icons zooming in and out
 gsap.to('.skills-wrapper', {
     scrollTrigger: {
@@ -359,7 +343,6 @@ const ulBtnMobile = document.querySelector('.mobile-nav-holder .portfolio-link')
 const skillsBtnMobile = document.querySelector('.mobile-nav-holder .skills-link');
 const aboutBtnMobile = document.querySelector('.mobile-nav-holder .about-link');
 const contactBtnMobile = document.querySelector('.mobile-nav-holder .contact-link');
-document.addEventListener('scroll', laptopAnimation);
 btn.addEventListener('click', seeMyWork);
 ulBtn.addEventListener('click', seeMyWork);
 skillsBtn.addEventListener('click', skills);
