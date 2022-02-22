@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser';
 import{ init } from '@emailjs/browser';
 init("user_4AtxMgTsmU9RsnzhIN1z1");
 
-// Debug
+// Debug    
 // const gui = new dat.GUI()
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -342,9 +342,9 @@ const onSubmit = (e) => {
         textarea: textarea.value,
         email: email.value
     };
-    emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+    emailjs.send('service_ro80pyo', 'template_7ywl66f', templateParams)
         .then((res) => {
-            console.log(res)
+            alert('Email Sent Successfully');
         })
         .catch((err) => {
             console.log(err)
