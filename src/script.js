@@ -3,6 +3,9 @@ import * as THREE from 'three'
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 // import * as dat from 'dat.gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import emailjs from '@emailjs/browser';
+import{ init } from '@emailjs/browser';
+init("user_4AtxMgTsmU9RsnzhIN1z1");
 
 // Debug
 // const gui = new dat.GUI()
@@ -327,6 +330,36 @@ thirdCardTl.to('.hide-card-3-col-2', {
     x: '100vw'
 },0)
 
+
+
+
+const onSubmit = (e) => {
+    e.preventDefault();
+    let templateParams = {
+        name: name.value,
+        lastname: lastname.value,
+        subject: subject.value,
+        textarea: textarea.value,
+        email: email.value
+    };
+    emailjs.send(process.env.SERVICE_ID, process.env.TEMPLATE_ID, templateParams)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+// contact form
+const form = document.querySelector('form');
+const name = document.querySelector('#name');
+const lastname = document.querySelector('#lastname');
+const subject = document.querySelector('#subject');
+const textarea = document.querySelector('#textarea');
+const email = document.querySelector('#email');
+
+// desktop nav links
 const btn = document.querySelector('.hidebutton');
 const ulBtn = document.querySelector('.portfolio-link');
 const skillsBtn = document.querySelector('.skills-link');
@@ -348,6 +381,7 @@ ulBtnMobile.addEventListener('click', seeMyWork)
 skillsBtnMobile.addEventListener('click', skills)
 aboutBtnMobile.addEventListener('click', about)
 contactBtnMobile.addEventListener('click', contact)
+form.addEventListener('submit', onSubmit);
 
 /**
  * Renderer
