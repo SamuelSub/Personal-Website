@@ -1,18 +1,7 @@
-import './style.css'
-import * as THREE from 'three'
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-// import * as dat from 'dat.gui'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import emailjs from '@emailjs/browser';
 import{ init } from '@emailjs/browser';
 init("user_4AtxMgTsmU9RsnzhIN1z1");
-
-// Debug    
-// const gui = new dat.GUI()
-// Canvas
-const canvas = document.querySelector('canvas.webgl')
-// Scene
-const scene = new THREE.Scene()
+import './style.css'
 
 let tl = gsap.timeline();
 gsap.registerPlugin(ScrollTrigger, scrollTo);
@@ -29,7 +18,7 @@ tl.to('.loading', {
 
 
 tl.from('.hidetext', {
-    delay: .5,
+    delay: 0.5,
     duration: 1,
     ease: 'power4.out',
     stagger: 0.2,
@@ -44,7 +33,7 @@ tl.from('nav', {
 }, 1.5)
 
 tl.from('.hidebutton', {
-    delay: 1,
+    delay: 0.5,
     duration: 1,
     ease: 'power4.out',
     stagger: 0.2,
@@ -53,87 +42,15 @@ tl.from('.hidebutton', {
 
 tl.to('.hidetext', {
     color: '#E63946',
-    delay: 0.7
+    delay: 0.5
 }, 1.5)
 
+tl.to('.hide-phone-holder', {
+    x: '100vw',
+    delay: 0.5,
+    duration: 4
+}, 1.5)
 
-// Loader
-const loader = new GLTFLoader();
-
-let laptop;
-
-loader.load('newPhone.glb', (glb) => {
-    laptop = glb;
-    scene.add(glb.scene)
-    if(window.innerWidth >= 660) {
-        tl.to(glb.scene.position, {
-            duration: 1.5,
-            z: 3.5,
-            x: 4
-        }, 1.5);
-        tl.to(glb.scene.rotation, {
-            duration: 1.5,
-            y: 2.7,
-        }, 1.5)
-    }
-    
-    if(window.innerWidth < 660) {
-        gsap.to(glb.scene.position, {
-            duration: 1.5,
-            z: 0,
-            x: 0.5,
-            y: 1.5
-        }, 1.5)
-
-        gsap.to(glb.scene.rotation, {
-            duration: 1.5,
-            y: 2.8
-        }, 1.5)
-
-    } else {
-        console.log(window.innerWidth);
-        glb.scene.position.x = 5
-    }
-}, undefined, (err) => {
-    console.error(err);
-})
-
-// Lights
-const pointLight = new THREE.PointLight(0xffffff, 1)
-pointLight.position.set(2, 0, 10);
-scene.add(pointLight)
-
-/**
- * Sizes
- */
-const sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight
-}
-
-window.addEventListener('resize', () =>
-{
-    // Update sizes
-    sizes.width = window.innerWidth
-    sizes.height = window.innerHeight
-    
-    // Update camera
-    camera.aspect = sizes.width / sizes.height
-    camera.updateProjectionMatrix()
-    
-    // Update renderer
-    renderer.setSize(sizes.width, sizes.height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-})
-
-/**
- * Camera
- */
-// Base camera
-const camera = new THREE.PerspectiveCamera(40, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 12
-
-scene.add(camera)
 
 const seeMyWork = (e) => {
     gsap.to(window, {
@@ -382,40 +299,3 @@ skillsBtnMobile.addEventListener('click', skills)
 aboutBtnMobile.addEventListener('click', about)
 contactBtnMobile.addEventListener('click', contact)
 form.addEventListener('submit', onSubmit);
-
-/**
- * Renderer
- */
-const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    alpha: true,
-    antialias: true
-})
-
-renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
-/**
- * Animate
- */
-const clock = new THREE.Clock()
-
-const tick = () =>
-{
-
-    const elapsedTime = clock.getElapsedTime()
-
-    // Update objects
-    // sphere.rotation.y = .5 * elapsedTime
-
-    // Update Orbital 
-    // controls.update()
-
-    // Render
-    renderer.render(scene, camera)
-
-    // Call tick again on the next frame
-    window.requestAnimationFrame(tick)
-}
-
-tick()
